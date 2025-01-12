@@ -29,13 +29,13 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 class DialogueItem(BaseModel):
     text: str
-    speaker: Literal["host-female", "host-male", "guest-1", "guest-2", "guest-3", "guest-4"]
+    speaker: Literal["host-female", "main-speaker", "guest-1", "guest-2", "guest-3", "guest-4"]
 
     @property
     def voice(self):
         return {
             "host-female": "nova",      # Clear, professional female host voice
-            "host-male": "onyx",        # Deep, authoritative male host voice
+            "main-speaker": "onyx",        # Deep, authoritative male host voice
             "guest-1": "alloy",         # Balanced, neutral voice
             "guest-2": "echo",          # Younger-sounding voice
             "guest-3": "fable",         # Warm, welcoming voice
@@ -80,7 +80,7 @@ def generate_audio(file: str, openai_api_key: str = None) -> bytes:
     )
     def generate_dialogue(text: str) -> Dialogue:
         """
-        Your task is to take the input text provided and turn it into an engaging, informative podcast dialogue. The input text may be messy or unstructured, as it could come from a variety of sources like PDFs or web pages. Don't worry about the formatting issues or any irrelevant information; your goal is to extract the key points and interesting facts that could be discussed in a podcast.
+        Your task is to take the input text provided and turn it into an engaging, dramatic podcast dialogue featuring four distinct voices discussing interconnected books and ideas. The input text may be messy or unstructured, as it could come from various sources like PDFs or web pages. Focus on extracting key points and creating compelling conversations that reveal hidden patterns and unexpected connections.
 
         Here is the input text you will be working with:
 
@@ -88,26 +88,67 @@ def generate_audio(file: str, openai_api_key: str = None) -> bytes:
         {text}
         </input_text>
 
-        First, carefully read through the input text and identify the main topics, key points, and any interesting facts or anecdotes. Think about how you could present this information in a fun, engaging way that would be suitable for an audio podcast.
+        Speaker Roles:
+        - Reada (Host): Guides the conversation, draws connections, and asks probing questions
+        - Main Speaker: Author of the core pattern book, leading the primary discussion
+        - Guest 1 & 2: Authors of supporting books, offering complementary perspectives
+
+        First, carefully read through the input text and identify:
+        - Core patterns and hidden structures
+        - Unexpected connections between everyday experiences and deeper principles
+        - Opportunities for dramatic revelation and insight
+        - Points of practical relevance and application
 
         <scratchpad>
-        Brainstorm creative ways to discuss the main topics and key points you identified in the input text. Consider using analogies, storytelling techniques, or hypothetical scenarios to make the content more relatable and engaging for listeners.
+        Brainstorm creative ways to structure the dialogue that:
+        1. Reveal hidden patterns in everyday experiences
+        2. Connect common situations to unexpected domains
+        3. Balance intriguing premises with practical relevance
+        4. Vary narrative approaches (evolution, analysis, revelation)
 
-        Keep in mind that your podcast should be accessible to a general audience, so avoid using too much jargon or assuming prior knowledge of the topic. If necessary, think of ways to briefly explain any complex concepts in simple terms.
+        Consider using:
+        - Analogies and metaphors that bridge familiar and novel concepts
+        - Storytelling techniques that build dramatic tension
+        - Hypothetical scenarios that make abstract ideas concrete
+        - Strategic questioning that leads to moments of revelation
+        - Contrasting viewpoints that create engaging dynamics
 
-        Use your imagination to fill in any gaps in the input text or to come up with thought-provoking questions that could be explored in the podcast. The goal is to create an informative and entertaining dialogue, so feel free to be creative in your approach.
+        Keep in mind that your podcast should be:
+        - Accessible to a general audience while maintaining depth
+        - Dramatically engaging while remaining informative
+        - Structured to build toward key insights
+        - Balanced between theoretical understanding and practical application
 
-        Write your brainstorming ideas and a rough outline for the podcast dialogue here. Be sure to note the key insights and takeaways you want to reiterate at the end.
+        Write your brainstorming ideas and outline here, noting:
+        - Key dramatic moments and revelations
+        - Points of connection between different authors' perspectives
+        - Building blocks for narrative tension
+        - Core insights and practical takeaways
         </scratchpad>
 
-        Now that you have brainstormed ideas and created a rough outline, it's time to write the actual podcast dialogue. Aim for a natural, conversational flow between the host and any guest speakers. Incorporate the best ideas from your brainstorming session and make sure to explain any complex topics in an easy-to-understand way.
+        Now create the podcast dialogue, incorporating:
+        - Natural conversational flow between all speakers
+        - Clear character voices and perspectives
+        - Building dramatic tension and revelation
+        - Engaging explanations of complex topics
+        - Strategic integration of different viewpoints
 
         <podcast_dialogue>
-        Write your engaging, informative podcast dialogue here, based on the key points and creative ideas you came up with during the brainstorming session. Use a conversational tone and include any necessary context or explanations to make the content accessible to a general audience. Use made-up names for the hosts and guests to create a more engaging and immersive experience for listeners. Do not include any bracketed placeholders like [Host] or [Guest]. Design your output to be read aloud -- it will be directly converted into audio.
+        Write your engaging, dramatic podcast dialogue here. The conversation should:
+        - Begin with a compelling hook that connects to everyday experience
+        - Gradually reveal deeper patterns and unexpected connections
+        - Build dramatic tension through contrasting viewpoints and revelations
+        - Maintain practical relevance while exploring abstract concepts
+        - End with a natural synthesis of key insights
 
-        Make the dialogue as long and detailed as possible, while still staying on topic and maintaining an engaging flow. Aim to use your full output capacity to create the longest podcast episode you can, while still communicating the key information from the input text in an entertaining way.
+        Make the dialogue as detailed and substantive as possible while maintaining:
+        - Clear speaker identities (use real author names)
+        - Engaging conversational flow
+        - Building dramatic tension
+        - Natural integration of key concepts
+        - Practical applications and takeaways
 
-        At the end of the dialogue, have the host and guest speakers naturally summarize the main insights and takeaways from their discussion. This should flow organically from the conversation, reiterating the key points in a casual, conversational manner. Avoid making it sound like an obvious recap - the goal is to reinforce the central ideas one last time before signing off.
+        The ending should organically synthesize the main insights and practical applications, avoiding an obvious recap while reinforcing key ideas through natural conversation. The goal is to leave listeners with both theoretical understanding and actionable insights.
         </podcast_dialogue>
         """
 

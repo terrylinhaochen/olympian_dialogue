@@ -88,16 +88,19 @@ def generate_audio(file: str, openai_api_key: str = None) -> bytes:
         {text}
         </input_text>
 
+        Important Formatting Rules:
+        1. Do not use any bracketed placeholders or sound effects (e.g., no [Host], [Guest], or (sound effects))
+        2. Match voice gender to speaker gender - use male voices for male authors and female voices for female authors
+        3. Write dialogue to be read aloud directly - it will be converted to audio without modification
+        4. Begin each line with the speaker's actual name (e.g., "Reada:" or "John Thompson:")
+        5. Keep dialogue natural and conversational - avoid any formatting or stage directions
+
         Speaker Roles:
         - Reada (Host): Guides the conversation, draws connections, and asks probing questions
         - Main Speaker: Author of the core pattern book, leading the primary discussion
         - Guest 1 & 2: Authors of supporting books, offering complementary perspectives
-
-        First, carefully read through the input text and identify:
-        - Core patterns and hidden structures
-        - Unexpected connections between everyday experiences and deeper principles
-        - Opportunities for dramatic revelation and insight
-        - Points of practical relevance and application
+        
+        First, carefully read through the input text and identify the main topics, key points, and any interesting facts or anecdotes. Think about how you could present this information in a fun, engaging way that would be suitable for an audio podcast.
 
         <scratchpad>
         Brainstorm creative ways to structure the dialogue that:
@@ -141,14 +144,14 @@ def generate_audio(file: str, openai_api_key: str = None) -> bytes:
         - Maintain practical relevance while exploring abstract concepts
         - End with a natural synthesis of key insights
 
-        Make the dialogue as detailed and substantive as possible while maintaining:
+        Make the dialogue as long and detailed as possible, while maintaining:
         - Clear speaker identities (use real author names)
         - Engaging conversational flow
         - Building dramatic tension
         - Natural integration of key concepts
         - Practical applications and takeaways
 
-        The ending should organically synthesize the main insights and practical applications, avoiding an obvious recap while reinforcing key ideas through natural conversation. The goal is to leave listeners with both theoretical understanding and actionable insights.
+        At the end of the dialogue, have the host and guest speakers naturally summarize the main insights and takeaways from their discussion. This should flow organically from the conversation, reiterating the key points in a casual, conversational manner. Avoid making it sound like an obvious recap - the goal is to reinforce the central ideas one last time before signing off.
         </podcast_dialogue>
         """
 

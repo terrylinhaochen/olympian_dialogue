@@ -73,6 +73,7 @@ def generate_audio(file: str, openai_api_key: str = None) -> bytes:
     @retry(retry=retry_if_exception_type(ValidationError))
     @llm(
         model="gemini/gemini-1.5-flash-002",
+        api_key="AIzaSyD2udCMKiixztGCp0gcpB2FDSlKE9s2ypE"
     )
     def generate_dialogue(text: str) -> Dialogue:
         """

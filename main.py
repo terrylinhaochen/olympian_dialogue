@@ -29,14 +29,17 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 class DialogueItem(BaseModel):
     text: str
-    speaker: Literal["female-1", "male-1", "female-2"]
+    speaker: Literal["host-female", "host-male", "guest-1", "guest-2", "guest-3", "guest-4"]
 
     @property
     def voice(self):
         return {
-            "female-1": "alloy",
-            "male-1": "onyx",
-            "female-2": "shimmer",
+            "host-female": "nova",      # Clear, professional female host voice
+            "host-male": "onyx",        # Deep, authoritative male host voice
+            "guest-1": "alloy",         # Balanced, neutral voice
+            "guest-2": "echo",          # Younger-sounding voice
+            "guest-3": "fable",         # Warm, welcoming voice
+            "guest-4": "sage",          # Mature, knowledgeable-sounding voice
         }[self.speaker]
 
 

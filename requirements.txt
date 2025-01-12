@@ -1,0 +1,9 @@
+gradio
+sentry-sdk
+fastapi
+loguru
+openai
+promptic
+pydantic
+pypdf
+tenacity

@@ -94,12 +94,13 @@ def generate_audio(file: str, openai_api_key: str = None) -> bytes:
         3. Write dialogue to be read aloud directly - it will be converted to audio without modification
         4. Begin each line with the speaker's actual name (e.g., "Reada:" or "John Thompson:")
         5. Keep dialogue natural and conversational - avoid any formatting or stage directions
+        6. Each speaker must introduce themselves naturally when they first enter the conversation (e.g., "Reada: Welcome everyone, I'm Reada, your host today...")
 
         Speaker Roles:
         - Reada (Host): Guides the conversation, draws connections, and asks probing questions
         - Main Speaker: Author of the core pattern book, leading the primary discussion
         - Guest 1 & 2: Authors of supporting books, offering complementary perspectives
-        
+
         First, carefully read through the input text and identify the main topics, key points, and any interesting facts or anecdotes. Think about how you could present this information in a fun, engaging way that would be suitable for an audio podcast.
 
         <scratchpad>

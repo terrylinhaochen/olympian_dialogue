@@ -1,3 +1,5 @@
+# focus on complete workflows rather than perfect generation.
+
 import concurrent.futures as cf
 import glob
 import io
